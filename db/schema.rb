@@ -10,11 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_114812) do
+ActiveRecord::Schema.define(version: 2021_04_20_102855) do
 
   create_table "clists", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.integer "gold"
+    t.integer "good_quests_done"
+    t.integer "bad_quests_done"
+    t.string "quests_done_list"
+    t.integer "points"
+    t.string "profession"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.string "short_discription"
+    t.string "description"
+    t.string "difficulty"
+    t.string "status"
+    t.string "aligment"
+    t.integer "quantity"
+    t.string "player"
+    t.string "requirements"
+    t.string "reward"
+    t.string "penalty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "have_opposite"
+    t.string "opposite_description"
+    t.string "opposite_requirements"
+    t.string "opposite_reward"
+    t.string "opposite_players"
+    t.string "opposite_aligment"
   end
 
 end
