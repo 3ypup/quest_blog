@@ -37,49 +37,26 @@
             </th>
           </tr>
 
+
+        <% @quests.each do |quest| %>
           <tr>
+            
             <td>
-              1
+              <%= quest.id %>
             </td>
             <td>
-              Золота короля
+              <%= quest.name %>
             </td>
             <td>
-              Средний
+              <%= quest.difficulty %>
             </td>
             <td>
-            Взять
+              Открыть
             </td>
+
           </tr>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              Сопровождение преступника
-            </td>
-            <td>
-              легкий
-            </td>
-            <td>
-            Взять
-            </td>
-          </tr>
-          <tr>
-            <td>
-             3
-            </td>
-            <td>
-              Сопровождение дворянина
-            </td>
-            <td>
-              сложный
-            </td>
-            <td>
-            Взять
-            </td>
-          </tr>
-          
+          <%end%>
+   
 
         </table>
       </label>

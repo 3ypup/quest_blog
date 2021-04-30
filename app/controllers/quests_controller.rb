@@ -10,7 +10,7 @@ def new
 end
 
 def create
-    @form = Form.new(form_params)
+    @quest = Quest.new(quest_params)
   
 
       if  @quest.save
@@ -32,6 +32,10 @@ def show
 end
 
 
+def index
+    @quests = Quest.all
+end
+
 
 
 
@@ -41,7 +45,7 @@ end
 
 
 	def quest_params
-    params.require(:uest).permit(
+    params.require(:quest).permit(
         :number,
     	:name,
     	:short_discription,
@@ -63,7 +67,34 @@ end
     	:opposite_requirements, 
     	:opposite_reward, 
     	:opposite_players, 
-    	:opposite_aligment
+    	:opposite_aligment,
+
+
+        :soldier,
+        :missioner,
+        :doctor,
+        :cook,
+        :seeman,
+        :carpenter,
+        :parlamenteer,
+        :korrehidor,
+        :trader,
+        :maper,
+
+
+        :op_soldier,
+        :op_missioner,
+        :op_doctor,
+        :op_cook,
+        :op_seeman,
+        :op_carpenter,
+        :op_parlamenteer,
+        :op_korrehidor,
+        :op_trader,
+        :op_maper,
+
+
+
 
     	)
 	end

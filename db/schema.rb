@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_102855) do
+ActiveRecord::Schema.define(version: 2021_04_30_060223) do
 
   create_table "clists", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -51,6 +51,26 @@ ActiveRecord::Schema.define(version: 2021_04_20_102855) do
     t.string "opposite_reward"
     t.string "opposite_players"
     t.string "opposite_aligment"
+    t.integer "soldier"
+    t.integer "missioner"
+    t.integer "doctor"
+    t.integer "cook"
+    t.integer "seeman"
+    t.integer "carpenter"
+    t.integer "parlamenteer"
+    t.integer "korrehidor"
+    t.integer "trader"
+    t.integer "maper"
+    t.integer "op_soldier"
+    t.integer "op_missioner"
+    t.integer "op_doctor"
+    t.integer "op_cook"
+    t.integer "op_seeman"
+    t.integer "op_carpenter"
+    t.integer "op_parlamenteer"
+    t.integer "op_korrehidor"
+    t.integer "op_trader"
+    t.integer "op_maper"
   end
 
 end

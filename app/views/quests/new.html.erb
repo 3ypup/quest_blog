@@ -8,9 +8,9 @@
   </head>
 
   <body class="hyphenate">
-
+<div class="opening-flavour">
     <h1>Новое задание</h1>
-               <label>
+<label>
 
     <%= form_for :quest,  url: quests_path do |f| %> 
 
@@ -50,138 +50,69 @@
 </label>
 
          <h2>Состав бригады</h2>
-<form1>
-    <p>
-      <br/><label>Профессия</label>
-        <%= f.select :requirements, [['Моряк','seeman'],['Доктор','doctor'],['Солдат','soldier'],['Кожевник','skin']] %>
-        <label>Количество</label>
-        <%= f.text_field :requirements , size: "4", value: 1 %>
-        <span class="remove">Убрать</span>
-    </p>
-    <p>
-        <span class="add">Добавить</span>
-    </p>
-</form1>
+
+<label><br/>
+  <p>Солдат <%=f.select :soldier, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Миссионер <%=f.select :missioner, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Лекарь <%=f.select :doctor, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Кок <%=f.select :cook, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Моряк <%=f.select :seeman, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Плотник <%=f.select :carpenter, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Парламентер <%=f.select :parlamenteer, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Коррехидор <%=f.select :korrehidor, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Торговец <%=f.select :trader, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Картограф <%=f.select :maper, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+    
 
 
-
-         <br/>
-
-      <p class="dropcap">
-        More styles are available, like the ones shown below,
-        including lists, quotes, and alternative colouring and layout.
-      </p>
-
-      <p>
-          You can sub-divide sections even further to explain more minor point.
-          Like if you want to explain about different kinds of movement.
-      </p>
-
-      <h4>Burrow</h4>
       
-      <p>
-        Curabitur rutrum non diam in eleifend.
-      </p>
+      <h2>Особый предмет, который нужно принести для выполнения<br/>
+        <%= f.text_area :requirements , size: "60x3", value: "Нет" %>
+      </h2><br/>
 
-      <h4>Climb</h4>
-      
-      <p>
-        Nulla gravida dui et ipsum iaculis eleifend.
-      </p>
+      <h2>Награда<br/>
+        <%= f.text_area :reward , size: "60x3", value: "Нет" %>
+      </h2>
 
-      <h4>Fly</h4>
 
-      <p>
-        Aenean volutpat, nisi in pellentesque consectetur, dui mauris tempor
-        sapien, non volutpat quam quam id arcu.
-      </p>
 
-      <p>
-        Below is a list of some creatures that can fly:
-      </p>
+<%=hidden_field :status, value: "sleep"%>
 
-      <p>
-        <strong>Unladen Swallows</strong> can fly.
-        Some have even been known to carry coconuts over long distances.
-      </p>
+  <h2>Есть квест-помеха  <%=f.select :have_opposite, [['нет','yes'],['да','no']]%></h2>
 
-      <p>
-        <strong>Bees</strong> can fly too. They like birds, so sometimes they
-        fly together.
-      </p>
-
-      <p>
-        <strong>Penguins</strong> can fly too if they swim really fast first.
-      </p>
-
-      <p>
-        Fusce maximus lacus pulvinar augue venenatis, sed ullamcorper odio gravida.
-        Maecenas nec dapibus elit, et faucibus enim.
-        Nulla auctor viverra orci ac tempor.
-        Mauris fringilla rhoncus nibh, quis volutpat velit vehicula et.
-      </p>
-      
-      <div class="sidenote">
-        <h4>Sidenotes</h4>
-        
-        <p>
-          Sometimes we might have asides to include.
-        </p>
-
-        <p>
-          This is the kind of place we can put them.
-        </p>
+       <div class="opening-flavour">
+        <h2>Описание для противников <%= f.text_area :opposite_description , size: "90x5", value: @description %></h2>
       </div>
 
-      <div class="page-break"></div>
+           <h2>Состав бригады-противников</h2>
 
-      <h2>More styles</h2>
-
-      <p class="dropcap">
-        More styles are available, like the ones shown below,
-        including lists, quotes, and alternative colouring and layout.
-      </p>
-
-      <h3 class="blue-head">Alternative header</h3>
-
-      <p>
-        Colours that work really well include:
-      </p>
-      
-      <ul>
-        <li>
-          Burgundy
-        </li>
-        <li>
-          Brown
-        </li>
-        <li>
-          Golden
-        </li>
-        <li>
-          Grey
-        </li>
-      </ul>
-
-      <p>
-        Don't quote me on that though.
-      </p>
-
-      <blockquote>
-        <p>
-          This is the single best thing since sliced bread. Perhaps.
-        </p>
-
-        <cite>
-          The Author, <i>The Scriptures</i>
-        </cite>
-      </blockquote>
+<label><br/>
+  <p>Солдат <%=f.select :op_soldier, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Миссионер <%=f.select :op_missioner, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Лекарь <%=f.select :op_doctor, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Кок <%=f.select :op_cook, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Моряк <%=f.select :op_seeman, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Плотник <%=f.select :op_carpenter, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Парламентер <%=f.select :op_parlamenteer, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Коррехидор <%=f.select :op_korrehidor, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Торговец <%=f.select :op_trader, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
+  <p>Картограф <%=f.select :op_maper, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]%></p><br/>
 
 
-      <div class="opening-flavour">
-        <%= f.text_area :opposite_description , size: "90x5", value: @description %>
-      </div>
+      <h2>Особый предмет, который нужно принести для выполнения<br/>
+        <%= f.text_area :opposite_requirements , size: "60x3", value: "Нет" %>
+      </h2><br/>
+      <h2>Награда<br/>
+        <%= f.text_area :opposite_reward , size: "60x3", value: "Нет" %>
+      </h2>
+
+
+
+</label>
+ 
+      <button class="button button-primary cta " type="submit">Создать квест</button>
+</label>
  <%end%>
-
+</div>
   </body>
 </html>
