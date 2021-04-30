@@ -1,0 +1,83 @@
+<html lang="en">
+
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+    
+  </head>
+
+  <body class="hyphenate">
+<div class="opening-flavour">
+    <h1><%=@quest.name%></h1>
+
+    <h3>Тип задания</h3>
+    <p3><%=@quest.short_discription%></p3>
+
+
+    <h3>Описание квеста</h3>
+    <p3><%=@quest.description%></p3>
+
+    <h3>Сложность</h3>
+    <p3><%=@quest.difficulty%></p3>
+
+
+    <h3>Законность</h3>
+    <p3><%=@quest.aligment%> </p3>
+
+    <h3><h2>Состав бригады</h2></h3>
+    <%if @quest.soldier != 0 %>
+    <p3> Солдат: <%=@quest.soldier%> чел.</p3>
+    <%end%>
+    <%if @quest.missioner != 0 %>
+    <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
+    <%end%>
+    <%if @quest.doctor != 0 %>
+    <p3> Лекарь: <%=@quest.doctor%> чел.</p3>
+    <%end%>
+    <%if @quest.cook != 0 %>
+    <p3> Кок: <%=@quest.cook%> чел.</p3>
+    <%end%>
+    <%if @quest.seeman != 0 %>
+    <p3> Моряк: <%=@quest.seeman%> чел.</p3>
+    <%end%>
+    <%if @quest.carpenter != 0 %>
+    <p3> Плотник: <%=@quest.carpenter%> чел.</p3>
+    <%end%>
+    <%if @quest.parlamenteer != 0 %>
+    <p3> Парламентер: <%=@quest.parlamenteer%> чел.</p3>
+    <%end%>
+    <%if @quest.korrehidor != 0 %>
+    <p3> Коррехидор: <%=@quest.korrehidor%> чел.</p3>
+    <%end%>
+    <%if @quest.trader != 0 %>
+    <p3> Торговец: <%=@quest.trader%> чел.</p3>
+    <%end%>
+    <%if @quest.maper != 0 %>
+    <p3> Картограф: <%=@quest.maper%> чел.</p3>
+    <%end%>
+
+
+
+    <h3>Особый предмет, который нужно принести для выполнения</h3>
+    <p3> <%=@quest.requirements%> </p3>
+
+
+    <h3>Награда</h3>
+    <p3><%=@quest.reward%></p3>
+
+
+
+    <h2> <a  href=<%=edit_quest_url(@quest)%>><h2>Дать Квест</h2></a></h2>
+
+
+
+
+
+
+
+
+
+
+<label>
+</label>

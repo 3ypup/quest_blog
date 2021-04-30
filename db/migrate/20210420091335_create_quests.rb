@@ -11,7 +11,7 @@ class CreateQuests < ActiveRecord::Migration[5.2]
     	t.string	:aligment
 
     	t.integer	:quantity
-    	t.string	:player
+    	t.text	    :player, array: true, default: [], null: false
     	t.string	:requirements
     	t.string	:reward
     	t.string 	:penalty

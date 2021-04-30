@@ -24,11 +24,24 @@ def create
 end
 
 def edit
+    @quest = Quest.find(params[:id])
+end
 
+
+def update
+
+    @quest = Quest.find(params[:id])
+
+ 
+    if  @quest.update(quest_params)
+        redirect_to @quest
+    else
+        render action: 'edit'
+    end
 end
 
 def show
-
+    @quest = Quest.find(params[:id])
 end
 
 
@@ -91,7 +104,7 @@ end
         :op_parlamenteer,
         :op_korrehidor,
         :op_trader,
-        :op_maper,
+        :op_maper
 
 
 
