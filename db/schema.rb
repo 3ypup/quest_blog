@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_060223) do
     t.string "status"
     t.string "aligment"
     t.integer "quantity"
-    t.string "player"
+    t.text "player"
     t.string "requirements"
     t.string "reward"
     t.string "penalty"
