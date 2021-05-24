@@ -107,9 +107,10 @@
 
 
   <% elsif @quest.status == "complete" %>
-  
+
 <h2> Квест выполнен</h2>
 <a class="button button-primary cta" href=<%=quests_path%>><h2>Врнуться к списку</h2></a>
 
 <%end%>
 
+<a class="button button-primary cta" href=<%=quest_path(@quest)%>><h2>Открыть</h2></a>
