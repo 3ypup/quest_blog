@@ -42,6 +42,7 @@
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й солдат нанят, игрок №
                         <%=unit.player %></p3><br/>
+<%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
 
                         <%else%>
 

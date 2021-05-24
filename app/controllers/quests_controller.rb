@@ -45,8 +45,19 @@ def show
     @quest = Quest.find(params[:id])
     @players = Player.all
     @units = @quest.units.all
+
+
+  
 end
 
+def destroy
+    @quest = Quest.find(params[:id])
+    @unit = params[unit]
+    @unit.destroy
+
+
+    redirect_to quest_path(@quest)
+end
 
 def index
     @quests = Quest.all

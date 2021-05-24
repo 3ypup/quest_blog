@@ -7,6 +7,18 @@ class UnitsController < ApplicationController
     redirect_to quest_path(@quest)
   end
 
+def destroy
+
+	@quest = Quest.find(params[:quest_id])
+ 	@unit = @quest.units.find(params[:id])
+    @unit.destroy
+
+
+  	redirect_to quest_path(@quest)
+
+end
+
+
   
 
   def unit_params
