@@ -26,8 +26,8 @@
     <p3><%=@quest.aligment%> </p3>
 
     <h3><h2>Состав бригады</h2></h3>
- <% if @quest.status == "wake"%>
-   
+    <% if @quest.status == "wake"%>
+   <!-- Добавление солдатов -->
 
             <%if @quest.soldier != 0 %>
                 <%@i = 1%>
@@ -36,8 +36,8 @@
                             <%@arr  << [player.number]  %>
                         <%end%>
 
-                 <p3> Солдат: <%=@quest.soldier.times do %></p3><br/>
-                        <%unit = @units.where(number:@i).take%>
+                 <p3> Солдат: <%@quest.soldier.times do %></p3><br/>
+                        <%unit = @units.where(number:@i,name:"солдат").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й солдат нанят, игрок №
@@ -58,10 +58,43 @@
                         <%end%>
                         <%@i+=1%>
                     <%end%>
-             <%end%>
-    <%if @quest.missioner != 0 %>
-    <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
-    <%end%>
+                <%end%><br/><br/>
+
+
+
+            <%if @quest.missioner != 0 %>
+                <%@m = 1%>
+                <%@arr = Array.new%>
+                        <%@players.each do |player| %>
+                            <%@arr  << [player.number]  %>
+                        <%end%>
+
+                 <p3> Миссионер: <%@quest.missioner.times do %></p3><br/>
+                        <%unit = @units.where(number:@m, name:"миссионер").take%>
+
+                        <% if unit != nil %>
+                        <p3><%=unit.number %>-й солдат нанят, игрок №
+                        <%=unit.player %></p3><br/>
+
+
+                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
+
+                        <%else%>
+
+                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
+                        <%= @m%><%=  f.hidden_field :name, value: "миссионер"%>
+                        <%= f.hidden_field :number, value: @m %>
+                        <%= f.select :player, @arr %>
+                        <%= f.submit  'нанять'%>
+                        <%end%>
+
+                        <%end%>
+                        <%@m+=1%>
+                    <%end%>
+                <%end%><br/><br/>
+
+
+    
     <%if @quest.doctor != 0 %>
     <p3> Лекарь: <%=@quest.doctor%> чел.</p3>
     <%end%>
