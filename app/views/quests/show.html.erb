@@ -26,9 +26,48 @@
     <p3><%=@quest.aligment%> </p3>
 
     <h3><h2>Состав бригады</h2></h3>
-    <%if @quest.soldier != 0 %>
-    <p3> Солдат: <%=@quest.soldier%> чел.</p3>
-    <%end%>
+ <% if @quest.status == "wake"%>
+   
+
+            <%if @quest.soldier != 0 %>
+                <%@i = 1%>
+                <%@arr = Array.new%>
+                        <%@players.each do |player| %>
+                            <%@arr  << [player.number]  %>
+                        <%end%>
+
+                 <p3> Солдат: <%=@quest.soldier.times do %></p3><br/>
+                        <%unit = @units.where(number:@i).take%>
+
+                        <% if unit != nil %>
+                        <p3><%=unit.number %>-й солдат нанят, игрок №
+                        <%=unit.player %></p3><br/>
+
+                        <%else%>
+
+                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
+                        <%= @i%><%=  f.hidden_field :name, value: "солдат"%>
+                        <%= f.hidden_field :number, value: @i %>
+                        <%= f.select :player, @arr %>
+                        <%= f.submit  'нанять'%>
+                        <%end%>
+
+                        <%end%>
+                        <%@i+=1%>
+                    <%end%>
+            
+        
+
+
+        
+            <%end%>
+                <%= @arr %>
+
+
+  
+<%end%>
+
+
     <%if @quest.missioner != 0 %>
     <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
     <%end%>
@@ -65,11 +104,7 @@
 
     <h3>Награда</h3>
     <p3><%=@quest.reward%></p3>
-
-
-
-    <h2> <a  href=<%=edit_quest_url(@quest)%>><h2>Дать Квест</h2></a></h2>
-
+</div>
 
 
 
@@ -79,5 +114,10 @@
 
 
 
-<label>
-</label>
+
+
+
+
+
+</body>
+</html>

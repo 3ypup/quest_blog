@@ -25,6 +25,7 @@ end
 
 def edit
     @quest = Quest.find(params[:id])
+
 end
 
 
@@ -42,6 +43,8 @@ end
 
 def show
     @quest = Quest.find(params[:id])
+    @players = Player.all
+    @units = @quest.units.all
 end
 
 

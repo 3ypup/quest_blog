@@ -4,6 +4,7 @@ Rails.application.routes.draw do
  get  "/" =>  "quests#index"
 
  resources :clist
- resources :quests
-
+ resources :quests do
+ 	resources :units
+ end
 end

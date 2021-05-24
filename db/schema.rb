@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_060223) do
+ActiveRecord::Schema.define(version: 2021_05_24_053148) do
 
   create_table "clists", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 2021_04_30_060223) do
     t.integer "op_korrehidor"
     t.integer "op_trader"
     t.integer "op_maper"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.text "name"
+    t.integer "number"
+    t.string "player"
+    t.integer "quest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quest_id"], name: "index_units_on_quest_id"
   end
 
 end

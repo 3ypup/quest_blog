@@ -33,6 +33,9 @@
               Сложность
             </th>
              <th>
+              Статус
+            </th>
+               <th>
               Взять
             </th>
           </tr>
@@ -50,8 +53,11 @@
             <td>
               <%= quest.difficulty %>
             </td>
+              <td>
+              <%= quest.status %>
+            </td>
             <td>
-              <a class="button button-primary cta" href=<%=quest_url(quest)%>><h2>Открыть</h2></a>
+              <a class="button button-primary cta" href=<%=edit_quest_url(quest)%>><h2>Открыть</h2></a>
             </td>
 
           </tr>
