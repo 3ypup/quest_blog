@@ -42,7 +42,9 @@
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й солдат нанят, игрок №
                         <%=unit.player %></p3><br/>
-<%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
 
                         <%else%>
 
@@ -56,17 +58,39 @@
                         <%end%>
                         <%@i+=1%>
                     <%end%>
-            
-        
+             <%end%>
+    <%if @quest.missioner != 0 %>
+    <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
+    <%end%>
+    <%if @quest.doctor != 0 %>
+    <p3> Лекарь: <%=@quest.doctor%> чел.</p3>
+    <%end%>
+    <%if @quest.cook != 0 %>
+    <p3> Кок: <%=@quest.cook%> чел.</p3>
+    <%end%>
+    <%if @quest.seeman != 0 %>
+    <p3> Моряк: <%=@quest.seeman%> чел.</p3>
+    <%end%>
+    <%if @quest.carpenter != 0 %>
+    <p3> Плотник: <%=@quest.carpenter%> чел.</p3>
+    <%end%>
+    <%if @quest.parlamenteer != 0 %>
+    <p3> Парламентер: <%=@quest.parlamenteer%> чел.</p3>
+    <%end%>
+    <%if @quest.korrehidor != 0 %>
+    <p3> Коррехидор: <%=@quest.korrehidor%> чел.</p3>
+    <%end%>
+    <%if @quest.trader != 0 %>
+    <p3> Торговец: <%=@quest.trader%> чел.</p3>
+    <%end%>
+    <%if @quest.maper != 0 %>
+    <p3> Картограф: <%=@quest.maper%> чел.</p3>
+    <%end%>
 
 
-        
-            <%end%>
-                <%= @arr %>
 
 
-  
-<%end%>
+    <%end%>
 
 
     <%if @quest.missioner != 0 %>
