@@ -65,14 +65,51 @@
     <h3>Награда</h3>
     <p3><%=@quest.reward%></p3>
 
-<%if @quest.status == "wake" %>
+<%if @quest.status == "sleep" %>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
 
 
   <%= f.hidden_field :status, value:"wake" %>
 
-  <p3> <%= f.submit 'Выдать квест'  %></p3>
+  <p3> <%= f.submit 'Разбудить квест'  %></p3>
+
+
   <%end%>
+
+  <%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper==@quest.units.count%>
+  <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
+
+
+  <%= f.hidden_field :status, value:"active" %>
+
+  <p3> <%= f.submit 'Начать выполнение квеста'  %></p3>
+
+
+  <%end%>
+
+
+<%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper != @quest.units.count%>
+
+<a class="button button-primary cta" href=<%=quest_path(@quest)%>><h2>Выдать</h2></a>
+
+
+  <%elsif @quest.status == "active" %>
+  <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
+
+
+  <%= f.hidden_field :status, value:"complete" %>
+
+  <p3> <%= f.submit 'Принять'  %></p3>
+
+
+
+  <%end%>
+
+
+  <% elsif @quest.status == "complete" %>
+  
+<h2> Квест выполнен</h2>
+<a class="button button-primary cta" href=<%=quests_path%>><h2>Врнуться к списку</h2></a>
 
 <%end%>
 

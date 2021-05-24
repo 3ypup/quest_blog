@@ -75,7 +75,7 @@
 
 
 
-<%=hidden_field :status, value: "sleep"%>
+
 
   <h2>Есть квест-помеха  <%=f.select :have_opposite, [['нет','yes'],['да','no']]%></h2>
 
@@ -105,10 +105,10 @@
         <%= f.text_area :opposite_reward , size: "60x3", value: "Нет" %>
       </h2>
 
-
+      <%=f.hidden_field :status, value: "sleep"%>
 
 </label>
- 
+       
       <button class="button button-primary cta " type="submit">Создать квест</button>
 </label>
  <%end%>
