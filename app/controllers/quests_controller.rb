@@ -1,6 +1,8 @@
 class QuestsController < ApplicationController
 
-
+def authentificate
+  before_action :authenticate_user!
+end
 
 
 def new
