@@ -77,7 +77,7 @@
 
 
 
-  <h2>Есть квест-помеха  <%=f.select :have_opposite, [['нет','yes'],['да','no']]%></h2>
+  <h2>Есть квест-помеха  <%=f.select :have_opposite, [['нет'],['да']]%></h2>
 
        <div class="opening-flavour">
         <h2>Описание для противников <%= f.text_area :opposite_description , size: "90x5", value: @description %></h2>

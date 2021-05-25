@@ -22,6 +22,6 @@ end
   
 
   def unit_params
-    params.require(:unit).permit(:name, :number, :player)
+    params.require(:unit).permit(:name, :number, :player, :u_aligment)
   end
 end

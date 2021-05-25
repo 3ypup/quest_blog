@@ -90,7 +90,7 @@
 
 <%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper != @quest.units.count%>
 
-<a class="button button-primary cta" href=<%=quest_path(@quest)%>><h2>Выдать</h2></a>
+<a class="button button-primary cta" href=<%=quest_path(@quest)%>><h2>Назначить игроков</h2></a>
 
 
   <%elsif @quest.status == "active" %>
