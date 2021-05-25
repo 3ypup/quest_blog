@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_053148) do
     t.integer "op_korrehidor"
     t.integer "op_trader"
     t.integer "op_maper"
+    t.string "op_prf"
   end
 
   create_table "units", force: :cascade do |t|
