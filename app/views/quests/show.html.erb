@@ -39,7 +39,7 @@
                         <%end%>
 
                  <p3> Солдат: <%@quest.soldier.times do %></p3><br/>
-                        <%unit = @units.where(number:@i,name:"солдат", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@i,name:"солдат", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й солдат нанят, игрок №
@@ -74,7 +74,7 @@
                         <%end%>
 
                  <p3> Миссионер: <%@quest.missioner.times do %></p3><br/>
-                        <%unit = @units.where(number:@m, name:"миссионер", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@m, name:"миссионер", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й миссионер нанят, игрок №
@@ -109,7 +109,7 @@
                         <%end%>
 
                  <p3> Лекарь: <%@quest.doctor.times do %></p3><br/>
-                        <%unit = @units.where(number:@d,name: "лекарь", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@d,name: "лекарь", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й лекарь нанят, игрок №
@@ -143,7 +143,7 @@
                         <%end%>
 
                  <p3> Кок: <%@quest.cook.times do %></p3><br/>
-                        <%unit = @units.where(number:@c,name: "кок", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@c,name: "кок", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й лекарь нанят, игрок №
@@ -178,7 +178,7 @@
                         <%end%>
 
                  <p3> Моряк: <%@quest.seeman.times do %></p3><br/>
-                        <%unit = @units.where(number:@s,name: "моряк", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@s,name: "моряк", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й моряк нанят, игрок №
@@ -212,7 +212,7 @@
                         <%end%>
 
                  <p3> Плотник: <%@quest.carpenter.times do %></p3><br/>
-                        <%unit = @units.where(number:@cp,name: "плотник", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@cp,name: "плотник", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й плотник нанят, игрок №
@@ -246,7 +246,7 @@
                         <%end%>
 
                  <p3> Парламентер: <%@quest.parlamenteer.times do %></p3><br/>
-                        <%unit = @units.where(number:@p,name: "парламентер", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@p,name: "парламентер", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й парламентер нанят, игрок №
@@ -280,7 +280,7 @@
                         <%end%>
 
                  <p3> Коррехидор: <%@quest.korrehidor.times do %></p3><br/>
-                        <%unit = @units.where(number:@k,name: "коррехидор", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@k,name: "коррехидор", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й коррехидор нанят, игрок №
@@ -314,7 +314,7 @@
                         <%end%>
 
                  <p3> Торговец: <%@quest.trader.times do %></p3><br/>
-                        <%unit = @units.where(number:@t,name: "торговец", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@t,name: "торговец", u_aligment:"good").take%>
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й торговец нанят, игрок №
                         <%=unit.player %></p3><br/>
@@ -351,7 +351,7 @@
                         <%end%>
 
                  <p3> Картограф: <%@quest.maper.times do %></p3><br/>
-                        <%unit = @units.where(number:@ma,name: "картограф", u_aligment:"good",u_aligment:"bad").take%>
+                        <%unit = @units.where(number:@ma,name: "картограф", u_aligment:"good").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й картограф нанят, игрок №
@@ -519,6 +519,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_m%><%=  f.hidden_field :name, value: "миссионер"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_m %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -551,6 +552,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_d%><%=  f.hidden_field :name, value: "лекарь"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_d %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -584,6 +586,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_c%><%=  f.hidden_field :name, value: "кок"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_c %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -618,6 +621,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_s%><%=  f.hidden_field :name, value: "моряк"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_s %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -651,6 +655,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_cp%><%=  f.hidden_field :name, value: "плотник"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_cp %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -684,6 +689,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_p%><%=  f.hidden_field :name, value: "парламентер"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_p %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -717,6 +723,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_k%><%=  f.hidden_field :name, value: "коррехидор"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_k %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -750,6 +757,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_t%><%=  f.hidden_field :name, value: "торговец"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_t %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
@@ -787,6 +795,7 @@
 
                         <%= form_for ([@quest, @quest.units.build]) do |f| %> 
                         <%= @op_ma%><%=  f.hidden_field :name, value: "картограф"%>
+                        <%= f.hidden_field :u_aligment, value: "bad" %>
                         <%= f.hidden_field :number, value: @op_ma %>
                         <%= f.select :player, @arr %>
                         <%= f.submit  'нанять'%>
