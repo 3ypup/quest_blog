@@ -39,7 +39,7 @@
                         <%end%>
 
                  <p3> Солдат: <%@quest.soldier.times do %></p3><br/>
-                        <%unit = @units.where(number:@i,name:"солдат", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@i,name:"солдат", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й солдат нанят, игрок №
@@ -74,7 +74,7 @@
                         <%end%>
 
                  <p3> Миссионер: <%@quest.missioner.times do %></p3><br/>
-                        <%unit = @units.where(number:@m, name:"миссионер", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@m, name:"миссионер", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й миссионер нанят, игрок №
@@ -109,7 +109,7 @@
                         <%end%>
 
                  <p3> Лекарь: <%@quest.doctor.times do %></p3><br/>
-                        <%unit = @units.where(number:@d,name: "лекарь", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@d,name: "лекарь", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й лекарь нанят, игрок №
@@ -143,7 +143,7 @@
                         <%end%>
 
                  <p3> Кок: <%@quest.cook.times do %></p3><br/>
-                        <%unit = @units.where(number:@c,name: "кок", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@c,name: "кок", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й лекарь нанят, игрок №
@@ -178,7 +178,7 @@
                         <%end%>
 
                  <p3> Моряк: <%@quest.seeman.times do %></p3><br/>
-                        <%unit = @units.where(number:@s,name: "моряк", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@s,name: "моряк", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й моряк нанят, игрок №
@@ -212,7 +212,7 @@
                         <%end%>
 
                  <p3> Плотник: <%@quest.carpenter.times do %></p3><br/>
-                        <%unit = @units.where(number:@cp,name: "плотник", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@cp,name: "плотник", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й плотник нанят, игрок №
@@ -246,7 +246,7 @@
                         <%end%>
 
                  <p3> Парламентер: <%@quest.parlamenteer.times do %></p3><br/>
-                        <%unit = @units.where(number:@p,name: "парламентер", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@p,name: "парламентер", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й парламентер нанят, игрок №
@@ -280,7 +280,7 @@
                         <%end%>
 
                  <p3> Коррехидор: <%@quest.korrehidor.times do %></p3><br/>
-                        <%unit = @units.where(number:@k,name: "коррехидор", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@k,name: "коррехидор", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й коррехидор нанят, игрок №
@@ -314,7 +314,7 @@
                         <%end%>
 
                  <p3> Торговец: <%@quest.trader.times do %></p3><br/>
-                        <%unit = @units.where(number:@t,name: "торговец", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@t,name: "торговец", u_aligment:"good",u_aligment:"bad").take%>
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й торговец нанят, игрок №
                         <%=unit.player %></p3><br/>
@@ -351,7 +351,7 @@
                         <%end%>
 
                  <p3> Картограф: <%@quest.maper.times do %></p3><br/>
-                        <%unit = @units.where(number:@ma,name: "картограф", u_aligment:"good").take%>
+                        <%unit = @units.where(number:@ma,name: "картограф", u_aligment:"good",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й картограф нанят, игрок №
@@ -506,7 +506,7 @@
                         <%end%>
 
                  <p3> Миссионер: <%@quest.op_missioner.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_m, name:"миссионер").take%>
+                        <%unit = @units.where(number:@op_m, name:"миссионер",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й миссионер нанят, игрок №
@@ -538,7 +538,7 @@
                         <%end%>
 
                  <p3> Лекарь: <%@quest.op_doctor.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_d,name: "лекарь").take%>
+                        <%unit = @units.where(number:@op_d,name: "лекарь",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й лекарь нанят, игрок №
@@ -571,7 +571,7 @@
                         <%end%>
 
                  <p3> Кок: <%@quest.op_cook.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_c,name: "кок").take%>
+                        <%unit = @units.where(number:@op_c,name: "кок",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й кок нанят, игрок №
@@ -605,7 +605,7 @@
                         <%end%>
 
                  <p3> Моряк: <%@quest.op_seeman.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_s,name: "моряк").take%>
+                        <%unit = @units.where(number:@op_s,name: "моряк",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й моряк нанят, игрок №
@@ -638,7 +638,7 @@
                         <%end%>
 
                  <p3> Плотник: <%@quest.op_carpenter.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_cp,name: "плотник").take%>
+                        <%unit = @units.where(number:@op_cp,name: "плотник",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й плотник нанят, игрок №
@@ -666,12 +666,12 @@
             <%if @quest.op_parlamenteer != 0 %>
                 <%@op_p = 1%>
                 <%@arr = Array.new%>
-                        <%@op_players.each do |player| %>
+                        <%@players.each do |player| %>
                             <%@arr  << [player.number]  %>
                         <%end%>
 
                  <p3> Парламентер: <%@quest.op_parlamenteer.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_p,name: "парламентер").take%>
+                        <%unit = @units.where(number:@op_p,name: "парламентер",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й парламентер нанят, игрок №
@@ -704,7 +704,7 @@
                         <%end%>
 
                  <p3> Коррехидор: <%@quest.op_korrehidor.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_k,name: "коррехидор").take%>
+                        <%unit = @units.where(number:@op_k,name: "коррехидор",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й коррехидор нанят, игрок №
@@ -737,7 +737,7 @@
                         <%end%>
 
                  <p3> Торговец: <%@quest.op_trader.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_t,name: "торговец").take%>
+                        <%unit = @units.where(number:@op_t,name: "торговец",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й торговец нанят, игрок №
@@ -774,7 +774,7 @@
                         <%end%>
 
                  <p3> Картограф: <%@quest.op_maper.times do %></p3><br/>
-                        <%unit = @units.where(number:@op_ma,name: "картограф").take%>
+                        <%unit = @units.where(number:@op_ma,name: "картограф",u_aligment:"bad").take%>
 
                         <% if unit != nil %>
                         <p3><%=unit.number %>-й картограф нанят, игрок №
