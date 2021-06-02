@@ -28,7 +28,7 @@
     <h3><h2>Состав бригады</h2></h3>
 
 
-    <% if @quest.status == "wake"%>
+    <% if @quest.status == "wake" and @quest.aligment == "Законный" or @quest.aligment == "Противозаконный" and @quest.status == "active"%>
    <!-- Добавление солдатов -->
 <div class="two-columns">
             <%if @quest.soldier != 0 %>
@@ -383,7 +383,9 @@
 
     <%end%>
 </div>
-
+    <%if @quest.soldier != 0 %>
+    <p3> Солдат: <%=@quest.soldier%> чел.</p3>
+    <%end%>
     <%if @quest.missioner != 0 %>
     <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
     <%end%>
@@ -455,11 +457,13 @@
 <%end%>
 <div class="two-columns">
 
-<%if @quest.aligment == "Законный" %>
 
 
-    <% if @quest.status == "active" and @quest.have_opposite == "да"%>
+
+
+    <% if @quest.aligment == "Законный" and @quest.status == "active" and @quest.have_opposite == "да" or @quest.aligment == "Противозаконный" and @quest.status =="wake"%>
    <!-- Добавление солдатов -->
+
 
    <h2>Назначить бригаду-помеху </h2>
 
@@ -807,7 +811,7 @@
                 <%end%><br/><br/>
 
 <%end%>
-<%end%>
+
 </div>
 
 
