@@ -65,6 +65,14 @@
     <h3>Награда</h3>
     <p3><%=@quest.reward%></p3>
 
+<br/>
+<%if @quest.started_at != nil %>
+    <%if @quest.started_at.strftime("%s").to_i > Time.now.strftime("%s").to_i %>
+<p2> Осталось до начала квеста: <%=Time.at(@quest.started_at.strftime("%s").to_i - Time.now.strftime("%s").to_i).utc.strftime("%H ч. %M м.")%> </p2>
+<%end%>
+<%end%>
+
+
 <%if @quest.status == "sleep" %>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
 
@@ -76,14 +84,19 @@
 
   <%end%>
 
-  <%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper==@quest.units.count%>
+  <%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper==@quest.units.count or  @quest.aligment == "Противозаконный" and @quest.status == "wake" and @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper == @quest.units.count%>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
+
+<%utc_offset = +3%>
+<%zone = ActiveSupport::TimeZone[utc_offset].name%>
+<%Time.zone = zone%> 
+<%Time.zone.now%>
 
 
   <%= f.hidden_field :status, value:"active" %>
-
+  <p3> Начать выполнение в:  <%= f.time_select :started_at, value: Time.now.in_time_zone(zone)%><br/>
   <p3> <%= f.submit 'Начать выполнение квеста'  %></p3>
-
+ 
 
   <%end%>
 

@@ -10,6 +10,14 @@
   <body class="hyphenate">
 <div class="opening-flavour">
     <h1><%=@quest.name%></h1>
+<%if @quest.started_at != nil %>
+    <%if @quest.started_at.strftime("%s").to_i > Time.now.strftime("%s").to_i %>
+<p2> Осталось до начала квеста: <%=Time.at(@quest.started_at.strftime("%s").to_i - Time.now.strftime("%s").to_i).utc.strftime("%H ч. %M м.")%> </p2>
+<%end%>
+<%end%>
+
+
+
 
     <h3>Тип задания</h3>
     <p3><%=@quest.short_discription%></p3>
@@ -25,7 +33,8 @@
     <h3>Законность</h3>
     <p3><%=@quest.aligment%> </p3>
 
-    <h3><h2>Состав бригады</h2></h3>
+    <h3><h2>Состав законопослушной бригады </h2></h3>
+
 
 
     <% if @quest.status == "wake" and @quest.aligment == "Законный" or @quest.aligment == "Противозаконный" and @quest.status == "active"%>
@@ -465,7 +474,7 @@
    <!-- Добавление солдатов -->
 
 
-   <h2>Назначить бригаду-помеху </h2>
+   <h2>Назначить бригаду противозаконную</h2>
 
             <%if @quest.op_soldier != 0 %>
                 <%@op_i = 1%>
@@ -817,9 +826,9 @@
 
                 <%@op_u =@quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper%>
 
-                <% if @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper==@quest.units.count-@op_u and @quest.status == "active" %>
+                <% if @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper==@quest.units.count-@op_u and @quest.status == "active" or @quest.aligment == "Противозаконный" and @quest.status == "wake" and @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper == @quest.units.count %>
 
-                <a class="button button-primary cta" href=<%=edit_quest_path(@quest)%>><h2>Выдать квест-помеху</h2></a>
+                <a class="button button-primary cta" href=<%=edit_quest_path(@quest)%>><h2>Выдать Противозаконный квест</h2></a>
                 <%end%>
 
 </body>

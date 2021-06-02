@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_084300) do
+ActiveRecord::Schema.define(version: 2021_06_02_075151) do
 
   create_table "clists", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_084300) do
     t.integer "op_trader"
     t.integer "op_maper"
     t.string "op_prf"
+    t.datetime "started_at"
   end
 
   create_table "units", force: :cascade do |t|
