@@ -21,7 +21,11 @@
   </head>
 
   <body>
-
+    <%if user_signed_in? %>
+    <h3>Привет, <%=current_user.email%>.
+    Твое мировоззрение: <%=current_user.aligment%>. Твой уровень доступа: <%=current_user.level%></h3>
+    <hr/>
+<%end%>
     <a class="nav-link active" aria-current="page" href=<%=quests_url%>><h2>Все квесты</h2></a>
     <input  type="button" onclick="history.back();" value="Назад"/>
   
