@@ -7,8 +7,8 @@
     
   </head>
 
-  <body class="hyphenate">
-<div class="opening-flavour">
+  <body>
+<div>
     <h1><%=@quest.name%></h1>
 <%if @quest.started_at != nil %>
     <%if @quest.started_at.strftime("%s").to_i > Time.now.strftime("%s").to_i %>

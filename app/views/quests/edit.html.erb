@@ -7,8 +7,8 @@
     
   </head>
 
-  <body class="hyphenate">
-<div class="opening-flavour">
+  <body>
+<div>
     <h1><%=@quest.name%></h1>
 
     <h3>Тип задания</h3>
@@ -94,7 +94,7 @@
 
 
   <%= f.hidden_field :status, value:"active" %>
-  <p3> Начать выполнение в:  <%= f.time_select :started_at, value: Time.now.in_time_zone(zone)%><br/>
+  <p3> Начать выполнение в:  <%= f.time_select :started_at, value: Time.now.in_time_zone(zone)%><br/></p3>
   <p3> <%= f.submit 'Начать выполнение квеста'  %></p3>
  
 
@@ -127,3 +127,6 @@
 <%end%>
 
 <a class="button button-primary cta" href=<%=quest_path(@quest)%>><h2>Открыть</h2></a>
+</div>
+</body>
+</html>
