@@ -16,369 +16,58 @@
 <%end%>
 <%end%>
  
-    <h3>Тип задания</h3>
-    <p3><%=@quest.short_discription%></p3>
 
-
-    <h3>Описание квеста</h3>
-    <p3><%=@quest.description%></p3>
-
-    <h3>Сложность</h3>
-    <p3><%=@quest.difficulty%></p3>
-
-
-    <h3>Законность</h3>
-    <p3><%=@quest.aligment%> </p3>
-
-    <h3><h2>Состав законопослушной бригады </h2></h3>
+    <h3><h2>Количество игроков: </h2></h3>
 
 
 
-    <% if @quest.status == "wake" and @quest.aligment == "Законный" or @quest.aligment == "Противозаконный" and @quest.status == "active"%>
-   <!-- Добавление солдатов -->
-<div class="two-columns">
-            <%if @quest.soldier != 0 %>
-                <%@i = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
+  <% if @quest.status == "wake" and @quest.aligment == "Законный" %>
 
-                 <p3> Солдат: <%@quest.soldier.times do %></p3><br/>
-                        <%unit = @units.where(number:@i,name:"солдат", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й солдат нанят, игрок №
-                        <%=unit.player %></p3><br/>
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @i%><%=  f.hidden_field :name, value: "солдат"%>
-                        <%= f.hidden_field :number, value: @i %>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@i+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-
- <!-- Добавление миссионера -->
-
-
-            <%if @quest.missioner != 0 %>
-                <%@m = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Миссионер: <%@quest.missioner.times do %></p3><br/>
-                        <%unit = @units.where(number:@m, name:"миссионер", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й миссионер нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @m%><%=  f.hidden_field :name, value: "миссионер"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @m %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@m+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-
-
- <!-- Добавление лекаря -->
-
-            <%if @quest.doctor != 0 %>
-                <%@d = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Лекарь: <%@quest.doctor.times do %></p3><br/>
-                        <%unit = @units.where(number:@d,name: "лекарь", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й лекарь нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @d%><%=  f.hidden_field :name, value: "лекарь"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @d %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@d+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-
-        <!-- Добавление кока -->
-
-            <%if @quest.cook != 0 %>
-                <%@c = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Кок: <%@quest.cook.times do %></p3><br/>
-                        <%unit = @units.where(number:@c,name: "кок", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й лекарь нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @c%><%=  f.hidden_field :name, value: "кок"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @c %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@c+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-
-
-        <!-- Добавление моряка -->
-
-            <%if @quest.seeman != 0 %>
-                <%@s = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Моряк: <%@quest.seeman.times do %></p3><br/>
-                        <%unit = @units.where(number:@s,name: "моряк", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й моряк нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @s%><%=  f.hidden_field :name, value: "моряк"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @s %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@s+=1%>
-                    <%end%>
-                <%end%><br/><br/>
+<!-- Добавление игроков -->
+<%if @quest.soldier != nil %>
         
-<!-- Добавление плотника -->
-
-            <%if @quest.carpenter != 0 %>
-                <%@cp = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Плотник: <%@quest.carpenter.times do %></p3><br/>
-                        <%unit = @units.where(number:@cp,name: "плотник", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й плотник нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @cp%><%=  f.hidden_field :name, value: "плотник"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @cp %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@cp+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-
-<!-- Добавление парламентера -->
-
-            <%if @quest.parlamenteer != 0 %>
-                <%@p = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Парламентер: <%@quest.parlamenteer.times do %></p3><br/>
-                        <%unit = @units.where(number:@p,name: "парламентер", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й парламентер нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @p%><%=  f.hidden_field :name, value: "парламентер"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @p %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@p+=1%>
-                    <%end%>
-                <%end%><br/><br/>
+        <%@arr = Array.new%>
+        <%@players.each do |player| %>
+            <%@arr  << [player.number]  %>
+        <%end%>
+        <%@i = 1 %>
         
-<!-- Добавление коррехидора -->
+         <table>
+          <tr>
+            <th>
+              Наемник №
+            </th>
+            <th>
+              Игрок №
+            </th>
+            </tr>
+            <tr>
+            <%@quest.soldier.times do %></p3><br/>
+               <%@unit = @units.where(number:@i,name:"солдат", u_aligment:"good").take%>
+                <% if @unit != nil %>
+                     <td><%=@unit.number %></td>
+                                            <td><%=@unit.player %>
+                                        <%= link_to 'Уволить',  quest_unit_path(@unit.quest, @unit),   method: :delete, data: { confirm: 'Точно?' } %></td>
+                                        <%@i+=1%>
 
-            <%if @quest.korrehidor != 0 %>
-                <%@k = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
+                <%else%>
+                        <%= form_for ([@quest, @quest.units.build]) do |f| %>
+                                            Принять в наемники №<%= @i%> игрока № <%=  f.hidden_field :name, value: "солдат"%>
+                                            <%= f.hidden_field :number, value: @i  %>
+                                            <%= f.hidden_field :u_aligment, value: "good" %>
+                                            <!--<%= f.select :player, @arr %>-->
+                                            <!--<%= f.submit  'нанять'%>-->
+                                            <%= f.select :player, @arr, { class: 'form-control'}, :onchange => 'this.form.submit()' %>
+                                            <%@i+=1%>
+                                        </tr>
+            <%end%>
 
-                 <p3> Коррехидор: <%@quest.korrehidor.times do %></p3><br/>
-                        <%unit = @units.where(number:@k,name: "коррехидор", u_aligment:"good").take%>
+        <%end%>
+   <br/> 
+    <%end%>
+<%end%><br/><br/>
+</table>
 
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й коррехидор нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @k%><%=  f.hidden_field :name, value: "коррехидор"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @k %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@k+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-        
-<!-- Добавление торговца -->
-
-            <%if @quest.trader != 0 %>
-                <%@t = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Торговец: <%@quest.trader.times do %></p3><br/>
-                        <%unit = @units.where(number:@t,name: "торговец", u_aligment:"good").take%>
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й торговец нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @t%><%=  f.hidden_field :name, value: "торговец"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @t %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@t+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-        
-
-
-
-
-<!-- Добавление картографа -->
-
-            <%if @quest.maper != 0 %>
-                <%@ma = 1%>
-                <%@arr = Array.new%>
-                        <%@players.each do |player| %>
-                            <%@arr  << [player.number]  %>
-                        <%end%>
-
-                 <p3> Картограф: <%@quest.maper.times do %></p3><br/>
-                        <%unit = @units.where(number:@ma,name: "картограф", u_aligment:"good").take%>
-
-                        <% if unit != nil %>
-                        <p3><%=unit.number %>-й картограф нанят, игрок №
-                        <%=unit.player %></p3><br/>
-
-
-                    <%= link_to 'Delete',  quest_unit_path(unit.quest, unit),   method: :delete, data: { confirm: 'Are you sure?' } %>
-
-                        <%else%>
-
-                        <%= form_for ([@quest, @quest.units.build]) do |f| %> 
-                        <%= @ma%><%=  f.hidden_field :name, value: "картограф"%>
-                        <%= f.hidden_field :u_aligment, value: "good" %>
-                        <%= f.hidden_field :number, value: @ma %>
-                        <%= f.select :player, @arr %>
-                        <%= f.submit  'нанять'%>
-                        <%end%>
-
-                        <%end%>
-                        <%@ma+=1%>
-                    <%end%>
-                <%end%><br/><br/>
-        
 
 
 
@@ -387,9 +76,10 @@
 
     <%end%>
 </div>
-    <%if @quest.soldier != 0 %>
-    <p3> Солдат: <%=@quest.soldier%> чел.</p3>
+    <%if @quest.soldier != nil %>
+    <p3>  <%=@quest.soldier%> чел.</p3>
     <%end%>
+    <!--
     <%if @quest.missioner != 0 %>
     <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
     <%end%>
@@ -418,7 +108,21 @@
     <p3> Картограф: <%=@quest.maper%> чел.</p3>
     <%end%>
 
+-->
 
+    <h3>Тип задания</h3>
+    <p3><%=@quest.short_discription%></p3>
+
+
+    <h3>Описание квеста</h3>
+    <p3><%=@quest.description%></p3>
+
+    <h3>Сложность</h3>
+    <p3><%=@quest.difficulty%></p3>
+
+
+    <h3>Законность</h3>
+    <p3><%=@quest.aligment%> </p3>
 
     <h3>Особый предмет, который нужно принести для выполнения</h3>
     <p3> <%=@quest.requirements%> </p3>
@@ -439,7 +143,7 @@
 
 <%@quest.units.count%>
 
-<% if @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper==@quest.units.count and @quest.status == "wake" %>
+<% if @quest.soldier==@quest.units.count and @quest.status == "wake" %>
 
  
 
@@ -814,9 +518,9 @@
 </div>
 
 
-                <%@op_u =@quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper%>
+                <%@op_u =@quest.soldier%>
 
-                <% if @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper==@quest.units.count-@op_u and @quest.status == "active" or @quest.aligment == "Противозаконный" and @quest.status == "wake" and @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper == @quest.units.count %>
+                <% if @quest.op_soldier==@quest.units.count-@op_u and @quest.status == "active" or @quest.aligment == "Противозаконный" and @quest.status == "wake" and @quest.op_soldier== @quest.units.count %>
 
                 <a class="button button-primary cta" href=<%=edit_quest_path(@quest)%>><h2>Выдать Противозаконный квест</h2></a>
                 <%end%>

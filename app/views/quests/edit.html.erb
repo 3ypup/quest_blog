@@ -26,11 +26,12 @@
     <p3><%=@quest.aligment%> </p3>
 
 
-    <h3>Состав бригады</h3>
-    <p3><%=@quest.aligment%> </p3>
+    <h3>Необходимо игроков:
+   
     <%if @quest.soldier != 0 %>
-    <p3> Солдат: <%=@quest.soldier%> чел.</p3>
+     <%=@quest.soldier%>. </h3>
     <%end%>
+    <!--
     <%if @quest.missioner != 0 %>
     <p3> Миссионер: <%=@quest.missioner%> чел.</p3>
     <%end%>
@@ -58,6 +59,8 @@
     <%if @quest.maper != 0 %>
     <p3> Картограф: <%=@quest.maper%> чел.</p3>
     <%end%>
+
+  -->
     <h3>Особый предмет, который нужно принести для выполнения</h3>
     <p3> <%=@quest.requirements%> </p3>
 
@@ -79,12 +82,14 @@
 
   <%= f.hidden_field :status, value:"wake" %>
 
+
+
   <p3> <%= f.submit 'Разбудить квест'  %></p3>
 
 
   <%end%>
 
-  <%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper==@quest.units.count or  @quest.aligment == "Противозаконный" and @quest.status == "wake" and @quest.op_soldier+@quest.op_missioner+@quest.op_doctor+@quest.op_cook+@quest.op_seeman+@quest.op_carpenter+@quest.op_korrehidor+@quest.op_parlamenteer+@quest.op_trader+@quest.op_maper == @quest.units.count%>
+  <%elsif @quest.status == "wake" and @quest.soldier==@quest.units.count or  @quest.aligment == "Противозаконный" and @quest.status == "wake" and @quest.op_soldier== @quest.units.count%>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
 
 <%utc_offset = +3%>
@@ -101,7 +106,7 @@
   <%end%>
 
 
-<%elsif @quest.status == "wake" and @quest.soldier+@quest.missioner+@quest.doctor+@quest.cook+@quest.seeman+@quest.carpenter+@quest.korrehidor+@quest.parlamenteer+@quest.trader+@quest.maper != @quest.units.count%>
+<%elsif @quest.status == "wake" and @quest.soldier != @quest.units.count%>
 
 <a class="button button-primary cta" href=<%=quest_path(@quest)%>><h2>Назначить игроков</h2></a>
 
