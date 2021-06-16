@@ -33,7 +33,7 @@
             </th>
 
           </tr>
-          <tr>
+          
           
   <% if @quest.status == "wake" and @quest.aligment == "Законный" %>
 
@@ -48,6 +48,7 @@
         
         
             <%@quest.soldier.times do %></p3>
+            <tr>
                <%@unit = @units.where(number:@i,name:"солдат", u_aligment:"good").take%>
                 <% if @unit != nil %>
                      <td>
@@ -59,9 +60,10 @@
                     <td>
                     <%= link_to 'Уволить',  quest_unit_path(@unit.quest, @unit),   method: :delete, data: { confirm: 'Точно?' } %></td>
                                         <%@i+=1%>
-
+</tr>
                 <%else%>
                         <%= form_for ([@quest, @quest.units.build]) do |f| %>
+                        <tr>
                                            <td>
                                             <%= @i%>
                                                 
@@ -79,11 +81,12 @@
                                         <td>
                                                 Нанят
                                         </td>
+                                    </tr>
             <%end%>
                       
 
         <%end%>
-   </tr>
+  
     <%end%>
         <%end%>
           
