@@ -20,7 +20,21 @@
     <h3><h2>Количество игроков: </h2></h3>
 
 
+<table>
+          <tr>
+            <th>
+              Номер наемника
+            </th>
+            <th>
+              Номер игрока
+            </th>
+            <th>
+              Уволить
+            </th>
 
+          </tr>
+          <tr>
+          
   <% if @quest.status == "wake" and @quest.aligment == "Законный" %>
 
 <!-- Добавление игроков -->
@@ -32,42 +46,48 @@
         <%end%>
         <%@i = 1 %>
         
-         <table>
-          <tr>
-            <th>
-              Наемник №
-            </th>
-            <th>
-              Игрок №
-            </th>
-            </tr>
-            <tr>
-            <%@quest.soldier.times do %></p3><br/>
+        
+            <%@quest.soldier.times do %></p3>
                <%@unit = @units.where(number:@i,name:"солдат", u_aligment:"good").take%>
                 <% if @unit != nil %>
-                     <td><%=@unit.number %></td>
-                                            <td><%=@unit.player %>
-                                        <%= link_to 'Уволить',  quest_unit_path(@unit.quest, @unit),   method: :delete, data: { confirm: 'Точно?' } %></td>
+                     <td>
+                        <%=@unit.number %>
+                            
+                    </td>
+                    <td>
+                    <%=@unit.player %></td>
+                    <td>
+                    <%= link_to 'Уволить',  quest_unit_path(@unit.quest, @unit),   method: :delete, data: { confirm: 'Точно?' } %></td>
                                         <%@i+=1%>
 
                 <%else%>
                         <%= form_for ([@quest, @quest.units.build]) do |f| %>
-                                            Принять в наемники №<%= @i%> игрока № <%=  f.hidden_field :name, value: "солдат"%>
+                                           <td>
+                                            <%= @i%>
+                                                
+                                            </td>
+
+                                          <td> 
+                                           <%=  f.hidden_field :name, value: "солдат"%>
                                             <%= f.hidden_field :number, value: @i  %>
                                             <%= f.hidden_field :u_aligment, value: "good" %>
                                             <!--<%= f.select :player, @arr %>-->
                                             <!--<%= f.submit  'нанять'%>-->
                                             <%= f.select :player, @arr, { class: 'form-control'}, :onchange => 'this.form.submit()' %>
+                                        </td>
                                             <%@i+=1%>
-                                        </tr>
+                                        <td>
+                                                Нанят
+                                        </td>
             <%end%>
+                      
 
         <%end%>
-   <br/> 
+   </tr>
     <%end%>
-<%end%><br/><br/>
-</table>
-
+        <%end%>
+          
+</table>    
 
 
 
