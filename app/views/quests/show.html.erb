@@ -11,8 +11,14 @@
 <div>
     <h1><%=@quest.name%></h1>
 <%if @quest.started_at != nil %>
+
     <%if @quest.started_at.strftime("%s").to_i > Time.now.strftime("%s").to_i %>
+
 <p2> Осталось до начала квеста: <%=Time.at(@quest.started_at.strftime("%s").to_i - Time.now.strftime("%s").to_i).utc.strftime("%H ч. %M м.")%> </p2>
+<%=@quest.started_at.strftime("%s").to_i%>
+<%=Time.now.strftime("%s").to_i %>
+
+
 <%end%>
 <%end%>
  
@@ -36,8 +42,13 @@
           
           
   <% if @quest.status == "wake" and @quest.aligment == "Законный" %>
-
+  <% @a = "good"%>
+  <%elsif @quest.status == "active" and @quest.aligment == "Противозаконный"%> 
+    <% @a = "good"%>
+<%end%>
 <!-- Добавление игроков -->
+
+<% if @a == "good" %>
 <%if @quest.soldier != nil %>
         
         <%@arr = Array.new%>
@@ -88,8 +99,8 @@
         <%end%>
   
     <%end%>
-        <%end%>
-          
+ 
+    <%end%>      
 </table>    
 
 
@@ -197,6 +208,12 @@
 
 
    <h2>Назначить бригаду противозаконную</h2>
+
+
+
+
+
+
 
             <%if @quest.op_soldier != 0 %>
                 <%@op_i = 1%>
