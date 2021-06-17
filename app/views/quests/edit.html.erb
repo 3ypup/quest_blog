@@ -78,9 +78,91 @@
 
 
 
+<%if @quest.status == "sleep" %>
+  <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
+
+ <t2>Название квеста</t2><br/>
+   <p1> <%= f.text_field :name , size: "50x1", value: @quest.name %> </p1><br/><br/>
+
+      </div>
+
+      <h3>Описание квеста</h3>
+      
+      <div class="opening-flavour">
+        <%= f.text_area :description , size: "90x5", value: @quest.description %>
+      </div>
+
+  
+
+
+      <p>
+        Тип задания
+          <%= f.text_field :short_discription, value: @quest.short_discription %>
+      </p>
+
+      <br/>
+      <!--<p>
+        Сложность
+          <%= f.select :difficulty, [['Легкий','Легкий'],['Средний','Средний'],['Сложный','Сложный']] %>
+      </p>-->
+
+      <br/>
+
+      <p>
+        Законность
+          <%= f.select :aligment, [['Законный','Законный'],['Противозаконный','Противозаконный']], value: @quest.aligment %>
+      </p>
+</label>
+
+         <h2>Небходимо игроков: </h2>
 
 
 
+<p> <%=f.select :soldier, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]], value: @quest.soldier%></p><br/>
+
+      
+      <h2>Особый предмет или фраза, которые нужно принести или произнести для выполнения<br/>
+        <%= f.text_area :requirements , size: "60x3", value: @quest.requirements %>
+      </h2><br/>
+
+      <h2>Награда<br/>
+        <%= f.text_area :reward , size: "60x3", value: @quest.reward %>
+      </h2>
+
+
+
+
+
+  <h2>Есть квест-помеха  <%=f.select :have_opposite, [['нет'],['да']], value: @quest.have_opposite%></h2>
+
+       <div class="opening-flavour">
+        <h2>Описание для противников <%= f.text_area :opposite_description , size: "90x5", value: @quest.description %></h2>
+      </div>
+
+           <h2>Необходимо игроков-противников</h2>
+      <p> <%=f.select :op_soldier, [['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10], value: @quest.op_soldier]%></p><br/>
+      <label><br/>
+
+
+      <h2>Особый предмет, который нужно принести для выполнения<br/>
+        <%= f.text_area :opposite_requirements , size: "60x3", value: @quest.opposite_requirements %>
+      </h2><br/>
+      <h2>Награда<br/>
+        <%= f.text_area :opposite_reward , size: "60x3", value: @quest.opposite_reward %>
+      </h2>
+
+      <%=f.hidden_field :status, value: "sleep"%>
+
+  
+
+
+
+  <p3> <%= f.submit 'Отредактировать'  %></p3>
+
+
+  <%end%>
+
+<%end%>
 
 <%if @quest.status == "sleep" %>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
