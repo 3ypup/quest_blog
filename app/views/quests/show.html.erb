@@ -210,9 +210,11 @@
   <% @op_a = "bad"%>
   <%elsif @quest.status == "active" and @quest.aligment == "Законный"%> 
     <% @op_a = "bad"%>
+
+
     <%end%>
 
-<%  if @op_a = "bad" %>
+<%  if @op_a == "bad" %>
    <h2>Назначить бандитскую бригаду </h2>
 
 <table>
