@@ -283,18 +283,18 @@
 
  
 
+                <%@op_u =@quest.soldier%>
+
+                <% if @quest.op_soldier==@quest.units.count-@op_u   %>
+                    
+
+                <a class="button button-primary cta" href=<%=edit_quest_path(@quest)%>><h2>Выдать Противозаконный квест</h2></a>
+                <%end%>
 <%end%>
 
 
 
 
-                <%@op_u =@quest.soldier%>
-
-                <% if @quest.op_soldier==@quest.units.count-@op_u  %>
-                    <% if @op_a = "bad"%>
-
-                <a class="button button-primary cta" href=<%=edit_quest_path(@quest)%>><h2>Выдать Противозаконный квест</h2></a>
-                <%end%>
-                <%end%>
+               
 </body>
 </html>
