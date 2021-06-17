@@ -76,6 +76,13 @@
 <%end%>
 
 
+
+
+
+
+
+
+
 <%if @quest.status == "sleep" %>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
 
@@ -109,6 +116,8 @@
 
 <%elsif @quest.status == "active" and @quest.soldier == @quest.units.count %>
 <% if @quest.aligment == "Противозаконный" %>
+
+
 <%utc_offset = +3%>
 <%zone = ActiveSupport::TimeZone[utc_offset].name%>
 <%Time.zone = zone%> 
@@ -132,15 +141,30 @@
   <%elsif @quest.status == "active" %>
   <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
 
-
+  <%= f.hidden_field :aligment, value:"Законопослушный" %>
   <%= f.hidden_field :status, value:"complete" %>
 
-  <p3> <%= f.submit 'Принять',  data: { confirm: 'Задание полностью выполненно? Все предметы и персонажи присутствуют?' } %></p3>
+  <p3> <%= f.submit 'Принять задание у законопослушной бригады',  data: { confirm: 'Задание полностью выполненно? Все предметы и персонажи присутствуют?' } %></p3>
+
+<br/><hr/><br/>
 
 
 
   <%end%>
 
+    <%= form_for :quest, url: quest_path(@quest), method: :put do |f| %> 
+
+  <%= f.hidden_field :aligment, value:"Противозаконный" %>
+  <%= f.hidden_field :status, value:"complete" %>
+
+  <p3> <%= f.submit 'Принять задание у бандитской бригады',  data: { confirm: 'Задание полностью выполненно? Все предметы и персонажи присутствуют?' } %></p3>
+
+
+
+
+
+  <%end%>
+<hr/>
 
   <% elsif @quest.status == "complete" %>
 
